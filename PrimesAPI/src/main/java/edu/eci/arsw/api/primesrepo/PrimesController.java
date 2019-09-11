@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import edu.eci.arsw.api.primesrepo.service.PrimeAlreadyExistsException;
+import edu.eci.arsw.api.primesrepo.service.PrimeNotFoundException;
 
 
 import java.util.List;
@@ -51,7 +52,7 @@ public class PrimesController
             Gson gson  = new Gson();
             String jsonToReturn = "{\n" + "  \"primes\":" + gson.toJson(primeService.getFoundPrimes()) + "}";
             
-            return new ResponseEntity<>(jsonToReturn,HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(jsonToReturn,HttpStatus.OK);
             
         }catch(Exception ex){
             return new ResponseEntity<>("Primes not found", HttpStatus.NOT_FOUND);
@@ -93,20 +94,17 @@ public class PrimesController
     {
         try{
             FoundPrime fp = primeService.getPrime(primenumber);
-            if(fp == null){
-                return new ResponseEntity<>("prime number not found", HttpStatus.NOT_FOUND);
-            }
+            
             String jsonToReturn = "{\"user\":\"" + fp.getUser() + "\",\"prime\":\"" + fp.getPrime() + "\"}";
             
-            return new ResponseEntity<>(jsonToReturn,HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(jsonToReturn,HttpStatus.OK);
             
-        }catch(Exception ex){
-            return new ResponseEntity<>("prime number not found", HttpStatus.NOT_FOUND);
+        }catch(PrimeNotFoundException ex){
+            return new ResponseEntity<>("404" + ex.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
     
 
-    //TODO implement additional methods provided by PrimeService
 
 
 

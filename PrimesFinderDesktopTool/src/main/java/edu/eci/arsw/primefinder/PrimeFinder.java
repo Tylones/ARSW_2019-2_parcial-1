@@ -49,6 +49,8 @@ public class PrimeFinder extends Thread{
 
             BigInteger i=a;
             while (i.compareTo(b)<=0){
+                
+                // Check if paused 
                 synchronized(pauseLock){
                     while(isPaused){
                         pauseLock.wait();

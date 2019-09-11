@@ -24,22 +24,28 @@ public class PrimeServiceStub implements PrimeService
     /**
      *
      * @param foundPrime
-     * @throws PrimeAlreadyExistsException
+     * @throws PrimeAlreadyExistsException if trying to add an existing prime but with an other username
      */
     @Override
     public void addFoundPrime( FoundPrime foundPrime ) throws PrimeAlreadyExistsException
     {
         
-        
+        // Check if the prime already exists but with a different user name
         for(int i = 0; i < primes.size(); i++){
             if(primes.get(i).equalsPrimeButNotUser(foundPrime))
                 throw new PrimeAlreadyExistsException("Prime " + foundPrime.getPrime() + " already exists");
         }
         
+        // Check if the list already contains the same prime number (with the same user name)
+        // If so, do not add it to the list
         if(!primes.contains(foundPrime))
            primes.add(foundPrime);
     }
 
+    /**
+     * 
+     * @return the list of FoundPrime
+     */
     @Override
     public List<FoundPrime> getFoundPrimes()
     {
@@ -47,8 +53,13 @@ public class PrimeServiceStub implements PrimeService
         return primes;
     }
 
+    /**
+     * 
+     * @param prime the prime number to get the corresponding FoundPrime
+     * @return the corresponding FoundPrime
+     */
     @Override
-    public FoundPrime getPrime( String prime )
+    public FoundPrime getPrime( String prime ) throws PrimeNotFoundException
     {
         //TODO
         for(int i = 0; i < primes.size(); i++){
@@ -56,6 +67,7 @@ public class PrimeServiceStub implements PrimeService
                 return primes.get(i);
             }
         }
-        return null;
+        
+        throw new PrimeNotFoundException("Prime number : " + prime + " was not found");
     }
 }

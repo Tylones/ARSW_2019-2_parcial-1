@@ -8,17 +8,15 @@ package edu.eci.arsw.api.primesrepo.service;
 /**
  *
  * @author 2169368
- * This exception is thrown when an already existing prime is added with a different user name
  */
-public class PrimeAlreadyExistsException extends Exception{
+public class PrimeNotFoundException extends Exception{
 
-    public PrimeAlreadyExistsException(String message) {
+    public PrimeNotFoundException(String message) {
         super(message);
     }
 
-    public PrimeAlreadyExistsException(String message, Throwable cause) {
+    public PrimeNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
-
     
 }

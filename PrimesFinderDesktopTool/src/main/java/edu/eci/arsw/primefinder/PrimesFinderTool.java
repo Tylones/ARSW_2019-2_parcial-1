@@ -74,15 +74,18 @@ public class PrimesFinderTool {
                         System.out.println("User working again!");
                         
                     }
-                boolean isFinished = true;
-                for(PrimeFinder pf : finderTreads){
-                    if(pf.getState() != Thread.State.TERMINATED){
-                        isFinished = false;
+                    
+                    // Check if all threads finished their execution
+                    boolean isFinished = true;
+                    for(PrimeFinder pf : finderTreads){
+                        if(pf.getState() != Thread.State.TERMINATED){
+                            isFinished = false;
+                        }
                     }
-                }
-
-                if(isFinished)
-                    break;
+                    
+                    // If so, exit the loop
+                    if(isFinished)
+                        break;
                 } catch (InterruptedException ex) {
                     Logger.getLogger(PrimesFinderTool.class.getName()).log(Level.SEVERE, null, ex);
                 }

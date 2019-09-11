@@ -15,6 +15,6 @@ public interface PrimeService
 
     List<FoundPrime> getFoundPrimes();
 
-    FoundPrime getPrime( String prime );
+    FoundPrime getPrime( String prime ) throws PrimeNotFoundException;
 
 }
