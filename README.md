@@ -2,9 +2,9 @@
 
 ## Informations
 
-Name : Etienne Maxence Eugene REITZ
+**Name :**  ```Etienne Maxence Eugene REITZ```
 
-GitHub username : Tylones
+**GitHub username :** ```Tylones```
 
 
 ## API REST
