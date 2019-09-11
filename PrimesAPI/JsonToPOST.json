@@ -1,0 +1,7 @@
+{
+    "primes":[
+        {"user":"john","prime":"1"},
+        {"user":"john","prime":"5"},
+        {"user":"john","prime":"7"}
+    ]
+}
