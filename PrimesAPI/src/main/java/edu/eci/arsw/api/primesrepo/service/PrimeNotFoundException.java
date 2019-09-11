@@ -8,6 +8,7 @@ package edu.eci.arsw.api.primesrepo.service;
 /**
  *
  * @author 2169368
+ * This exception is thrown when a specific prime is not found in the list
  */
 public class PrimeNotFoundException extends Exception{
 
